@@ -1,6 +1,7 @@
 import Spinner from "@components/Spinner";
 import TripCard from "@components/TripCard";
 //import mock from "@mock/data.json";
+import { use } from "react";
 import { Trip } from "@models/Trip";
 import Image from "next/image";
 
@@ -69,8 +70,13 @@ async function fetchTrips() {
   }
 }
 
-async function TripsList() {
+async function getTrips() {
   const tripsList: Trip[] = (await fetchTrips()) ?? [];
+  return tripsList;
+}
+
+export default function Trips() {
+  const tripsList = use(getTrips());
   return (
     <div className="z-10 w-full max-w-5xl items-center justify-between font-mono">
       <div className="flex justify-between">
@@ -101,8 +107,4 @@ async function TripsList() {
       ))}
     </div>
   );
-}
-
-export default function Trips() {
-  return <TripsList />;
 }
