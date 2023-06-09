@@ -7,6 +7,12 @@ import Image from "next/image";
 
 let deviceId = new Date().getTime();
 
+enum VEHICLETYPES {
+  Train = "train",
+  Tram = "tram",
+  Bus = "bus",
+}
+
 async function getToken() {
   console.log(new Date().getTime());
   deviceId = deviceId || new Date().getTime();
@@ -37,9 +43,9 @@ async function fetchTrips() {
   const token: string = (await getToken()) ?? "";
 
   try {
-    // by cordinates?  "https://ext-api.vasttrafik.se/pr/v4/locations/by-coordinates?latitude=57.7045064&longitude=11.9705923&radiusInMeters=500&limit=10&offset=0",
+    // göteborg central "https://ext-api.vasttrafik.se/pr/v4/stop-areas/9021014008000000/departures"
+    // kungsports platsen "https://ext-api.vasttrafik.se/pr/v4/stop-areas/9021014004090000/departures",
 
-    //standard endpoint to get all departues from Kungsportsplatsen
     const res = await fetch(
       "https://ext-api.vasttrafik.se/pr/v4/stop-areas/9021014004090000/departures",
       {
@@ -56,7 +62,10 @@ async function fetchTrips() {
 
     return data.results?.map((t: any) => ({
       id: t.serviceJourney.gid,
-      platform: `Läge ${t.stopPoint.platform}`,
+      platform:
+        t.serviceJourney.line.transportMode === VEHICLETYPES.Train
+          ? t.serviceJourney.line.name
+          : `Läge ${t.stopPoint.platform}`,
       direction: t.serviceJourney.direction,
       number: t.serviceJourney.line.designation,
       estimatedDepartureTime: t.estimatedTime ?? t.plannedTime,
@@ -70,13 +79,13 @@ async function fetchTrips() {
   }
 }
 
-async function getTrips() {
-  const tripsList: Trip[] = (await fetchTrips()) ?? [];
-  return tripsList;
-}
+// async function getTrips() {
+//   const tripsList: Trip[] = (await fetchTrips()) ?? [];
+//   return tripsList;
+// }
 
 export default function Trips() {
-  const tripsList = use(getTrips());
+  const tripsList = use(fetchTrips());
   return (
     <div className="z-10 w-full max-w-5xl items-center justify-between font-mono">
       <div className="flex justify-between">
@@ -102,7 +111,7 @@ export default function Trips() {
         </button>
       </div>
 
-      {tripsList.map((trip, idx) => (
+      {tripsList.map((trip: Trip, idx: number) => (
         <TripCard key={idx} trip={trip} />
       ))}
     </div>
