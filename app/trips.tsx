@@ -19,7 +19,7 @@ async function getToken() {
   const credentials = btoa(
     process.env.VASTTRAFIK_CLIENT + ":" + process.env.VASTTRAFIK_SECRET
   );
-  //TODO: The given Auth token is wrong?? Works in postman. Find out why
+
   try {
     const res = await fetch("https://ext-api.vasttrafik.se/token", {
       method: "POST",
