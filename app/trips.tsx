@@ -1,4 +1,4 @@
-import Spinner from "@components/Spinner";
+import Dropdown from "@components/Dropdown";
 import TripCard from "@components/TripCard";
 //import mock from "@mock/data.json";
 import { use } from "react";
@@ -100,7 +100,9 @@ export default function Trips() {
           <h1 className="mt-4 text-2xl">Cygni |</h1>
           {/* <h1 className="mt-4 text-2xl">{originName}</h1> */}
         </div>
-        <button>
+        <div className="flex items-center justify-center">
+          <Dropdown />
+        </div>
           <Image
             src="/assets/refresh.svg"
             alt="refresh"
