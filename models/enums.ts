@@ -1,0 +1,10 @@
+export enum VEHICLETYPES {
+  Train = "train",
+  Tram = "tram",
+  Bus = "bus",
+}
+export enum STOP_AREAS {
+  KUNGSPORTSPLATSEN = "9021014004090000",
+  BRUNSPARKEN = "9021014001760000",
+  CENTRALSTATION = "9021014008000000",
+}

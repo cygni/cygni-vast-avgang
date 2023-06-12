@@ -11,7 +11,11 @@ function formatDate(dateStr: string): any {
 }
 function timeUntilDepature(estimatedDepartureTime: string): string {
   const diff = Number(new Date(estimatedDepartureTime)) - Number(new Date());
-  return `Avgår om ${Math.floor(diff / 1000 / 60).toString()} min`;
+  const diffInMinutes = Math.floor(diff / 1000 / 60);
+  if (diffInMinutes === 0) {
+    return `Avgår om mindre än 1 min`;
+  }
+  return diff > 0 ? `Avgår om ${diffInMinutes.toString()} min` : `Avgår nu`;
 }
 
 const TripCard = (props: { trip: Trip }) => {

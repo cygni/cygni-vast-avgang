@@ -4,6 +4,7 @@ export type Trip = {
   direction: string;
   number: string;
   estimatedDepartureTime: string;
+  transportMode: string;
   colors: Colors;
 };
 

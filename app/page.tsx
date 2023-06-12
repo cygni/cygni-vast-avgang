@@ -1,5 +1,5 @@
+import Trips from "@app/trips";
 import Spinner from "@components/Spinner";
-import Trips from "./trips";
 import { Suspense } from "react";
 
 export default async function Home() {

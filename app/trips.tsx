@@ -1,31 +1,22 @@
+"use client";
 import Dropdown from "@components/Dropdown";
 import TripCard from "@components/TripCard";
-//import mock from "@mock/data.json";
-import { use } from "react";
 import { Trip } from "@models/Trip";
+import { STOP_AREAS, VEHICLETYPES } from "@models/enums";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+//import mock from "@mock/data.json";
 
 let deviceId = new Date().getTime();
 
-enum VEHICLETYPES {
-  Train = "train",
-  Tram = "tram",
-  Bus = "bus",
-}
-
 async function getToken() {
-  console.log(new Date().getTime());
   deviceId = deviceId || new Date().getTime();
-  const credentials = btoa(
-    process.env.VASTTRAFIK_CLIENT + ":" + process.env.VASTTRAFIK_SECRET
-  );
-
   try {
     const res = await fetch("https://ext-api.vasttrafik.se/token", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
-        Authorization: "Basic " + credentials,
+        Authorization: `Basic ${process.env.NEXT_PUBLIC_VASTTRAFIK_AUTH_KEY}`,
       },
       body: new URLSearchParams({
         grant_type: "client_credentials",
@@ -39,15 +30,12 @@ async function getToken() {
   }
 }
 
-async function fetchTrips() {
+async function fetchTrips(stopArea: string) {
   const token: string = (await getToken()) ?? "";
 
   try {
-    // göteborg central "https://ext-api.vasttrafik.se/pr/v4/stop-areas/9021014008000000/departures"
-    // kungsports platsen "https://ext-api.vasttrafik.se/pr/v4/stop-areas/9021014004090000/departures",
-
     const res = await fetch(
-      "https://ext-api.vasttrafik.se/pr/v4/stop-areas/9021014004090000/departures",
+      `https://ext-api.vasttrafik.se/pr/v4/stop-areas/${stopArea}/departures?&limit=20&offset=0`,
       {
         method: "GET",
         headers: {
@@ -55,11 +43,7 @@ async function fetchTrips() {
         },
       }
     );
-
     const data = await res.json();
-    //const data = mock;
-    console.log("inside get trips", data);
-
     return data.results?.map((t: any) => ({
       id: t.serviceJourney.gid,
       platform:
@@ -73,23 +57,51 @@ async function fetchTrips() {
         foregroundColor: t.serviceJourney.line.foregroundColor,
         backgroundColor: t.serviceJourney.line.backgroundColor,
       },
+      transportMode: t.serviceJourney.line.transportMode,
     }));
   } catch (error) {
     console.error(error);
   }
 }
 
-// async function getTrips() {
-//   const tripsList: Trip[] = (await fetchTrips()) ?? [];
-//   return tripsList;
-// }
-
 export default function Trips() {
-  const tripsList = use(fetchTrips());
+  const [activeFilters, setActiveFilters] = useState<string[]>([
+    "train, tram, bus",
+  ]);
+  const [tripList, setTripList] = useState<Trip[]>([]);
+  const [selectedStopArea, setSelectedStopArea] = useState<string>(
+    STOP_AREAS.KUNGSPORTSPLATSEN
+  );
+  let interval: any = null;
+
+  const fetchData = async (stopAreaId?: string) => {
+    const trips = await fetchTrips(stopAreaId ?? selectedStopArea);
+    setTripList(trips);
+  };
+  const refresh = async (id?: string) => {
+    console.log("Refreshed");
+    if (id) {
+      setSelectedStopArea(id);
+    }
+    fetchData(id);
+    /*     interval = setInterval(() => {
+      console.log("[REFRESH] 1 MIN PASSED. FETCHING DATA AGAIN!");
+      fetchData();
+    }, 60000); */
+  };
+
+  useEffect(() => {
+    fetchData();
+    /* interval = setInterval(() => {
+      console.log("[USEEFFECT] 1 MIN PASSED. FETCHING DATA AGAIN!");
+      fetchData();
+    }, 5000); */
+  }, []);
+
   return (
     <div className="z-10 w-full max-w-5xl items-center justify-between font-mono">
       <div className="flex justify-between">
-        <div className="flex items-center gap-4 mb-6">
+        <div className="flex items-center gap-4 mb-2">
           <Image
             src="/assets/logo.svg"
             alt="logo"
@@ -98,24 +110,39 @@ export default function Trips() {
             className="object-contain"
           />
           <h1 className="mt-4 text-2xl">Cygni |</h1>
-          {/* <h1 className="mt-4 text-2xl">{originName}</h1> */}
         </div>
         <div className="flex items-center justify-center">
-          <Dropdown />
+          <Dropdown refresh={async (id) => refresh(id)} />
         </div>
+        <button
+          onClick={async () => {
+            refresh();
+          }}
+        >
           <Image
             src="/assets/refresh.svg"
             alt="refresh"
-            width={65}
-            height={65}
+            width={50}
+            height={50}
+            className="object-contain cursor-pointer transition rounded-full hover:backdrop-brightness-90"
+          />
+        </button>
+        <button>
+          <Image
+            src="/assets/filter.svg"
+            alt="filter"
+            width={50}
+            height={50}
             className="object-contain cursor-pointer transition rounded-full hover:backdrop-brightness-90"
           />
         </button>
       </div>
 
-      {tripsList.map((trip: Trip, idx: number) => (
-        <TripCard key={idx} trip={trip} />
-      ))}
+      <div>
+        {tripList.map((trip: Trip, idx: number) => (
+          <TripCard key={idx} trip={trip} />
+        ))}
+      </div>
     </div>
   );
 }
