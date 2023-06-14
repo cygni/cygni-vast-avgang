@@ -21,7 +21,7 @@ function timeUntilDepature(estimatedDepartureTime: string): string {
 const TripCard = (props: { trip: Trip }) => {
   const trip = props.trip;
   return (
-    <div className="p-6 mb-4 bg-white border border-gray-200 rounded-lg shadow">
+    <div className="p-6 mb-4 bg-white border border-gray-200 rounded-lg shadow transition duration-500 hover:brightness-90 cursor-pointer">
       <div className="flex items-center w-full">
         <div
           style={{

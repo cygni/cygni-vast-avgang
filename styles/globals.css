@@ -16,6 +16,14 @@
   }
 }
 
+html {
+  font-family: var(--font-barlow);
+}
+h1,
+h2,
+h3 {
+  font-family: var(--font-barlow-condensed);
+}
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(

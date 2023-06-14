@@ -19,19 +19,14 @@ export default function Trips() {
   let interval: any = null;
 
   const fetchData = async (stopAreaId?: string) => {
-    const trips = await fetchTrips(stopAreaId ?? selectedStopArea);
+    const trips = (await fetchTrips(stopAreaId ?? selectedStopArea)) ?? [];
     setTripList(trips);
   };
   const refresh = async (id?: string) => {
-    console.log("Refreshed");
     if (id) {
       setSelectedStopArea(id);
     }
     fetchData(id);
-    /*     interval = setInterval(() => {
-      console.log("[REFRESH] 1 MIN PASSED. FETCHING DATA AGAIN!");
-      fetchData();
-    }, 60000); */
   };
 
   useEffect(() => {
@@ -53,7 +48,7 @@ export default function Trips() {
             height={65}
             className="object-contain"
           />
-          <h1 className="mt-4 text-2xl">Cygni |</h1>
+          <h1 className="mt-4 text-2xl cursor-default">Cygni |</h1>
         </div>
         <div className="flex items-center justify-center">
           <Dropdown refresh={async (id) => refresh(id)} />
