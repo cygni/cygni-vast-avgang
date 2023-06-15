@@ -1,5 +1,5 @@
 "use client";
-import Dropdown from "@components/Dropdown";
+import Header from "@components/Header";
 import TripCard from "@components/TripCard";
 import { Trip } from "@models/Trip";
 import { STOP_AREAS } from "@models/enums";
@@ -38,47 +38,7 @@ export default function Trips() {
   }, []);
 
   return (
-    <div className="z-10 w-full max-w-5xl items-center justify-between font-mono">
-      <div className="flex justify-between">
-        <div className="flex items-center gap-4 mb-2">
-          <Image
-            src="/assets/logo.svg"
-            alt="logo"
-            width={65}
-            height={65}
-            className="object-contain"
-          />
-          <h1 className="mt-4 text-2xl cursor-default">Cygni |</h1>
-        </div>
-        <div className="flex items-center justify-center">
-          <Dropdown refresh={async (id) => refresh(id)} />
-        </div>
-        <div className="flex items-center justify-center">
-          <button
-            onClick={async () => {
-              refresh();
-            }}
-          >
-            <Image
-              src="/assets/refresh.svg"
-              alt="refresh"
-              width={50}
-              height={50}
-              className="object-contain cursor-pointer transition rounded-full hover:backdrop-brightness-90"
-            />
-          </button>
-        </div>
-        {/*         <button disabled>
-          <Image
-            src="/assets/filter.svg"
-            alt="filter"
-            width={50}
-            height={50}
-            className="object-contain cursor-pointer transition rounded-full hover:backdrop-brightness-90"
-          />
-        </button> */}
-      </div>
-
+      <Header refresh={async (id) => refresh(id)} />
       <div>
         {tripList.map((trip: Trip, idx: number) => (
           <TripCard key={idx} trip={trip} />
