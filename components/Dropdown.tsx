@@ -22,8 +22,8 @@ const Dropdown = (props: Props) => {
 
   /* Handles click outside of dropdown */
   const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);
-  function useOutsideAlerter(ref: any) {
+  useOutsideClickHandler(wrapperRef);
+  function useOutsideClickHandler(ref: any) {
     useEffect(() => {
       function handleClickOutside(event: any) {
         if (ref.current && !ref.current.contains(event.target)) {
@@ -38,31 +38,31 @@ const Dropdown = (props: Props) => {
   }
 
   return (
-    <div
-      className="relative flex flex-col items-center rounded min-w-[350px] mt-2 z-10"
-      ref={wrapperRef}
-    >
+    <div className="relative  min-w-[350px] mt-2 z-10" ref={wrapperRef}>
       <button
-        className="text-2xl p-2 w-full flex items-center justify-center rounded-lg tracking-wider border-4 border-transparent transition hover:border-white"
+        className="text-2xl p-3 w-full flex justify-center items-center rounded-lg tracking-wider transition hover:bg-slate-100"
         onClick={handleOpen}
       >
         <h3 className="font-bold">{selected}</h3>
         <Image
-          src={isOpen ? "/assets/arrow-up.svg" : "/assets/arrow-down.svg"}
+          src="/assets/arrow.svg"
           alt="logo"
           width={25}
           height={25}
-          className="object-contain ml-4"
+          style={{
+            transform: isOpen ? "rotate(0deg)" : "rotate(-180deg)",
+          }}
+          className="object-contain ml-4 transition duration-300"
         />
       </button>
 
       {isOpen && (
-        <div className="absolute top-16 flex flex-col items-start rounded-lg p-2 w-full bg-gray-50">
+        <div className="absolute top-16 flex flex-col items-start rounded-lg p-2 w-full bg-white shadow">
           {StopAreas.map((stopArea, index) => (
             <div
               key={index}
               onClick={() => handleSelected(stopArea)}
-              className="flex w-full p-4 hover:bg-blue-300 cursor-pointer rounded-r-lg border-l-transparent hover:border-l-white border-l-4"
+              className="flex w-full p-4 hover:bg-blue-200 cursor-pointer rounded-lg border-b last:border-b-0"
             >
               <h3 className="font-bold">{stopArea.name}</h3>
             </div>

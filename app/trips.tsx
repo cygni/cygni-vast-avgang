@@ -40,8 +40,8 @@ export default function Trips() {
     <div className="z-0 w-full max-w-5xl items-center justify-between font-mono">
       <Header refresh={async (id) => refresh(id)} />
       <div>
-        {tripList.map((trip: Trip, idx: number) => (
-          <TripCard key={idx} trip={trip} />
+        {tripList.map((trip: Trip) => (
+          <TripCard key={trip.id} trip={trip} />
         ))}
       </div>
     </div>

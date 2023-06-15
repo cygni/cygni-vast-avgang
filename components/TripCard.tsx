@@ -21,7 +21,7 @@ function timeUntilDepature(estimatedDepartureTime: string): string {
 const TripCard = (props: { trip: Trip }) => {
   const trip = props.trip;
   return (
-    <div className="p-6 mb-4 bg-white border border-gray-200 rounded-lg shadow transition duration-500 hover:brightness-90 cursor-pointer">
+    <div className="p-6 mb-4 bg-white border border-gray-100 rounded-lg shadow transition duration-500 hover:bg-slate-200 cursor-pointer">
       <div className="flex items-center w-full">
         <div
           style={{
@@ -34,18 +34,12 @@ const TripCard = (props: { trip: Trip }) => {
           {trip.number}
         </div>
         <div className="flex items-center justify-between w-full">
-          <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {trip.direction}
-          </h2>
-          <h2 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {trip.platform}
-          </h2>
+          <h2 className="text-2xl font-bold">{trip.direction}</h2>
+          <h2 className="text-xl font-bold">{trip.platform}</h2>
         </div>
       </div>
-      <div className="pt-2 flex items-center justify-between w-full">
-        <p className="font-normal text-gray-700 dark:text-gray-400">
-          Avgång: {formatDate(trip.estimatedDepartureTime)}
-        </p>
+      <div className="pt-3 flex items-center justify-between w-full text-gray-700">
+        <p>Avgång: {formatDate(trip.estimatedDepartureTime)}</p>
         <p>{timeUntilDepature(trip.estimatedDepartureTime)}</p>
       </div>
     </div>
