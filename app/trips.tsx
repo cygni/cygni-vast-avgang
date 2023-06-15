@@ -1,10 +1,9 @@
 "use client";
 import Header from "@components/Header";
 import TripCard from "@components/TripCard";
+import { StopAreas } from "@models/Models";
 import { Trip } from "@models/Trip";
-import { STOP_AREAS } from "@models/enums";
 import { fetchTrips } from "@services/TripsService";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 //import mock from "@mock/data.json";
 
@@ -14,7 +13,7 @@ export default function Trips() {
   ]); */
   const [tripList, setTripList] = useState<Trip[]>([]);
   const [selectedStopArea, setSelectedStopArea] = useState<string>(
-    STOP_AREAS.KUNGSPORTSPLATSEN
+    StopAreas[0].id
   );
   let interval: any = null;
 
@@ -38,6 +37,7 @@ export default function Trips() {
   }, []);
 
   return (
+    <div className="z-0 w-full max-w-5xl items-center justify-between font-mono">
       <Header refresh={async (id) => refresh(id)} />
       <div>
         {tripList.map((trip: Trip, idx: number) => (

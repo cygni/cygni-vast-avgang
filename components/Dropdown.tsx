@@ -1,23 +1,16 @@
 "use client";
+import { StopAreas } from "@models/Models";
+import { StopArea } from "@models/Trip";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Props {
   refresh: (id: string) => void;
 }
-type StopArea = {
-  id: string;
-  name: string;
-};
-const stopAreas: StopArea[] = [
-  { name: "Kungsportsplatsen", id: "9021014004090000" },
-  { name: "Brunsparken", id: "9021014001760000" },
-  { name: "Centralstationen", id: "9021014008000000" },
-];
 
 const Dropdown = (props: Props) => {
   const [isOpen, setOpen] = useState(false);
-  const [selected, setSelected] = useState(stopAreas[0].name);
+  const [selected, setSelected] = useState(StopAreas[0].name);
   const handleOpen = () => {
     setOpen(!isOpen);
   };
@@ -27,10 +20,30 @@ const Dropdown = (props: Props) => {
     props.refresh(stopArea.id);
   };
 
+  /* Handles click outside of dropdown */
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
+  function useOutsideAlerter(ref: any) {
+    useEffect(() => {
+      function handleClickOutside(event: any) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setOpen(false);
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+
   return (
-    <div className="relative flex flex-col items-center rounded min-w-[400px]">
+    <div
+      className="relative flex flex-col items-center rounded min-w-[350px] mt-2 z-10"
+      ref={wrapperRef}
+    >
       <button
-        className="text-2xl p-3 w-full flex items-center justify-center rounded-lg tracking-wider border-4 border-transparent transition hover:border-white"
+        className="text-2xl p-2 w-full flex items-center justify-center rounded-lg tracking-wider border-4 border-transparent transition hover:border-white"
         onClick={handleOpen}
       >
         <h3 className="font-bold">{selected}</h3>
@@ -44,8 +57,8 @@ const Dropdown = (props: Props) => {
       </button>
 
       {isOpen && (
-        <div className="absolute top-20 flex flex-col items-start rounded-lg p-2 w-full bg-gray-50">
-          {stopAreas.map((stopArea, index) => (
+        <div className="absolute top-16 flex flex-col items-start rounded-lg p-2 w-full bg-gray-50">
+          {StopAreas.map((stopArea, index) => (
             <div
               key={index}
               onClick={() => handleSelected(stopArea)}
