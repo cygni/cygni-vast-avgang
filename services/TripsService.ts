@@ -1,11 +1,13 @@
 import { Trip } from "@models/Trip";
 import { VEHICLETYPES } from "@models/enums";
+import { delay } from "@utils/delay";
 import Cookies from "js-cookie";
 import { getToken } from "./TokenService";
 
 export async function fetchTrips(stopArea: string) {
   const token = await getTokenFromCookieOrApi();
   try {
+    await delay(); /* For testing loading indicatior */
     const res = await fetch(
       `https://ext-api.vasttrafik.se/pr/v4/stop-areas/${stopArea}/departures?&limit=20&offset=0`,
       {

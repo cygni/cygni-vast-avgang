@@ -1,62 +1,80 @@
 "use client";
+import { Menu, Transition } from "@headlessui/react";
+import { StopAreas } from "@models/Models";
+import { StopArea } from "@models/Trip";
 import Image from "next/image";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 
 interface Props {
   refresh: (id: string) => void;
 }
-type StopArea = {
-  id: string;
-  name: string;
-};
-const stopAreas: StopArea[] = [
-  { name: "Kungsportsplatsen", id: "9021014004090000" },
-  { name: "Brunsparken", id: "9021014001760000" },
-  { name: "Centralstationen", id: "9021014008000000" },
-];
 
 const Dropdown = (props: Props) => {
-  const [isOpen, setOpen] = useState(false);
-  const [selected, setSelected] = useState(stopAreas[0].name);
-  const handleOpen = () => {
-    setOpen(!isOpen);
-  };
+  const [selected, setSelected] = useState(StopAreas[0].name);
   const handleSelected = (stopArea: StopArea) => {
+    if (stopArea.name === selected) {
+      return;
+    }
     setSelected(stopArea.name);
-    setOpen(false);
     props.refresh(stopArea.id);
   };
+  function classNames(...classes: string[]) {
+    return classes.filter(Boolean).join(" ");
+  }
 
   return (
-    <div className="relative flex flex-col items-center rounded min-w-[400px]">
-      <button
-        className="text-2xl p-3 w-full flex items-center justify-center rounded-lg tracking-wider border-4 border-transparent transition hover:border-white"
-        onClick={handleOpen}
-      >
-        <h3 className="font-bold">{selected}</h3>
-        <Image
-          src={isOpen ? "/assets/arrow-up.svg" : "/assets/arrow-down.svg"}
-          alt="logo"
-          width={25}
-          height={25}
-          className="object-contain ml-4"
-        />
-      </button>
+    <Menu
+      as="div"
+      className="relative inline-block min-w-[350px] font-semibold"
+    >
+      {({ open }) => (
+        <>
+          <div>
+            <Menu.Button className="text-lg w-full inline-flex justify-between items-center transition duration-200 p-4 rounded-lg bg-white shadow ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+              {selected}
+              <Image
+                src="/assets/arrow.svg"
+                alt="logo"
+                width={25}
+                height={25}
+                style={{
+                  transform: open ? "rotate(0deg)" : "rotate(-180deg)",
+                }}
+                className="object-contain ml-4 transition duration-200"
+              />
+            </Menu.Button>
+          </div>
 
-      {isOpen && (
-        <div className="absolute top-20 flex flex-col items-start rounded-lg p-2 w-full bg-gray-50">
-          {stopAreas.map((stopArea, index) => (
-            <div
-              key={index}
-              onClick={() => handleSelected(stopArea)}
-              className="flex w-full p-4 hover:bg-blue-300 cursor-pointer rounded-r-lg border-l-transparent hover:border-l-white border-l-4"
-            >
-              <h3 className="font-bold">{stopArea.name}</h3>
-            </div>
-          ))}
-        </div>
+          <Transition
+            as={Fragment}
+            enter="transition ease-out duration-100"
+            enterFrom="transform opacity-0 scale-95"
+            enterTo="transform opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="transform opacity-100 scale-100"
+            leaveTo="transform opacity-0 scale-95"
+          >
+            <Menu.Items className="absolute right-0 z-10 mt-2 min-w-[350px] rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              {StopAreas.map((sa) => (
+                <Menu.Item key={sa.id}>
+                  {({ active }) => (
+                    <div
+                      onClick={() => handleSelected(sa)}
+                      className={classNames(
+                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                        "p-4 border-b last:border-b-0"
+                      )}
+                    >
+                      {sa.name}
+                    </div>
+                  )}
+                </Menu.Item>
+              ))}
+            </Menu.Items>
+          </Transition>
+        </>
       )}
-    </div>
+    </Menu>
   );
 };
 

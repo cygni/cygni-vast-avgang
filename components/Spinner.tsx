@@ -1,9 +1,9 @@
 const Spinner = () => {
   return (
-    <div className="items-center flex flex-col absolute top-2/4">
+    <div className="items-center flex flex-col absolute top-2/4 w-full left-0">
       <svg
         aria-hidden="true"
-        className="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-purple-600"
+        className="inline w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-purple-600"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -17,7 +17,7 @@ const Spinner = () => {
           fill="currentFill"
         />
       </svg>
-      <h2 className="mt-4 text-2xl">Loading...</h2>
+      <h2 className="mt-4 text-2xl">Fetching new data...</h2>
     </div>
   );
 };

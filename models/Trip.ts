@@ -12,3 +12,8 @@ type Colors = {
   foregroundColor: string;
   backgroundColor: string;
 };
+
+export type StopArea = {
+  id: string;
+  name: string;
+};
