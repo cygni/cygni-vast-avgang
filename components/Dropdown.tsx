@@ -1,75 +1,80 @@
 "use client";
+import { Menu, Transition } from "@headlessui/react";
 import { StopAreas } from "@models/Models";
 import { StopArea } from "@models/Trip";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useState } from "react";
 
 interface Props {
   refresh: (id: string) => void;
 }
 
 const Dropdown = (props: Props) => {
-  const [isOpen, setOpen] = useState(false);
   const [selected, setSelected] = useState(StopAreas[0].name);
-  const handleOpen = () => {
-    setOpen(!isOpen);
-  };
   const handleSelected = (stopArea: StopArea) => {
+    if (stopArea.name === selected) {
+      return;
+    }
     setSelected(stopArea.name);
-    setOpen(false);
     props.refresh(stopArea.id);
   };
-
-  /* Handles click outside of dropdown */
-  const wrapperRef = useRef(null);
-  useOutsideClickHandler(wrapperRef);
-  function useOutsideClickHandler(ref: any) {
-    useEffect(() => {
-      function handleClickOutside(event: any) {
-        if (ref.current && !ref.current.contains(event.target)) {
-          setOpen(false);
-        }
-      }
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [ref]);
+  function classNames(...classes: string[]) {
+    return classes.filter(Boolean).join(" ");
   }
 
   return (
-    <div className="relative  min-w-[350px] mt-2 z-10" ref={wrapperRef}>
-      <button
-        className="text-2xl p-3 w-full flex justify-center items-center rounded-lg tracking-wider transition hover:bg-slate-100"
-        onClick={handleOpen}
-      >
-        <h3 className="font-bold">{selected}</h3>
-        <Image
-          src="/assets/arrow.svg"
-          alt="logo"
-          width={25}
-          height={25}
-          style={{
-            transform: isOpen ? "rotate(0deg)" : "rotate(-180deg)",
-          }}
-          className="object-contain ml-4 transition duration-300"
-        />
-      </button>
+    <Menu
+      as="div"
+      className="relative inline-block min-w-[350px] font-semibold"
+    >
+      {({ open }) => (
+        <>
+          <div>
+            <Menu.Button className="text-lg w-full inline-flex justify-between items-center transition duration-200 p-4 rounded-lg bg-white shadow ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+              {selected}
+              <Image
+                src="/assets/arrow.svg"
+                alt="logo"
+                width={25}
+                height={25}
+                style={{
+                  transform: open ? "rotate(0deg)" : "rotate(-180deg)",
+                }}
+                className="object-contain ml-4 transition duration-200"
+              />
+            </Menu.Button>
+          </div>
 
-      {isOpen && (
-        <div className="absolute top-16 flex flex-col items-start rounded-lg p-2 w-full bg-white shadow">
-          {StopAreas.map((stopArea, index) => (
-            <div
-              key={index}
-              onClick={() => handleSelected(stopArea)}
-              className="flex w-full p-4 hover:bg-blue-200 cursor-pointer rounded-lg border-b last:border-b-0"
-            >
-              <h3 className="font-bold">{stopArea.name}</h3>
-            </div>
-          ))}
-        </div>
+          <Transition
+            as={Fragment}
+            enter="transition ease-out duration-100"
+            enterFrom="transform opacity-0 scale-95"
+            enterTo="transform opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="transform opacity-100 scale-100"
+            leaveTo="transform opacity-0 scale-95"
+          >
+            <Menu.Items className="absolute right-0 z-10 mt-2 min-w-[350px] rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              {StopAreas.map((sa) => (
+                <Menu.Item key={sa.id}>
+                  {({ active }) => (
+                    <div
+                      onClick={() => handleSelected(sa)}
+                      className={classNames(
+                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                        "p-4 border-b last:border-b-0"
+                      )}
+                    >
+                      {sa.name}
+                    </div>
+                  )}
+                </Menu.Item>
+              ))}
+            </Menu.Items>
+          </Transition>
+        </>
       )}
-    </div>
+    </Menu>
   );
 };
 
