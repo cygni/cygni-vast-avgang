@@ -1,5 +1,9 @@
 import { Trip } from "@models/Trip";
 
+interface Props {
+  trip: Trip;
+}
+
 function formatDate(dateStr: string): any {
   if (dateStr) {
     const date = new Date(dateStr);
@@ -18,10 +22,10 @@ function timeUntilDepature(estimatedDepartureTime: string): string {
   return diff > 0 ? `Avgår om ${diffInMinutes.toString()} min` : `Avgår nu`;
 }
 
-const TripCard = (props: { trip: Trip }) => {
+const TripCard = (props: Props) => {
   const trip = props.trip;
   return (
-    <div className="p-6 mb-4 bg-white border border-gray-100 rounded-lg shadow transition duration-500 hover:bg-slate-200 cursor-pointer">
+    <div className="p-6 mb-4 bg-white border border-gray-100 rounded-lg shadow transition duration-500">
       <div className="flex items-center w-full">
         <div
           style={{

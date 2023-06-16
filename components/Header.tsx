@@ -13,7 +13,7 @@ const Header = (props: Props) => {
         <a
           href="https://cygni.se/region-vast/"
           target="_blank"
-          className="flex items-center justify-start gap-4 font-bold"
+          className="flex items-center justify-start gap-4"
         >
           <Image
             src="/assets/logo.svg"
@@ -22,7 +22,7 @@ const Header = (props: Props) => {
             height={65}
             className="object-contain"
           />
-          <h1 className="mt-4 text-2xl">Cygni</h1>
+          <h1 className="text-2xl font-semibold">Cygni</h1>
         </a>
         <div className="flex items-center justify-center">
           <Dropdown refresh={async (id) => props.refresh(id)} />
@@ -38,7 +38,7 @@ const Header = (props: Props) => {
               alt="refresh"
               width={65}
               height={65}
-              className="object-contain cursor-pointer transition duration-300 rounded-full hover:bg-slate-100 "
+              className="object-contain cursor-pointer transition duration-300 rounded-full hover:bg-slate-100"
             />
           </button>
           {/*           <button >
