@@ -1,0 +1,393 @@
+{
+  "colLeft": [
+    {
+      "title": "Brunsparken",
+      "trips": [
+        {
+          "id": "9015014501004939",
+          "platform": "Läge A2",
+          "direction": "Biskopsgården",
+          "number": "10",
+          "estimatedDepartureTime": "2023-06-30T12:35:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#006c93",
+            "backgroundColor": "#d8e8b0"
+          },
+          "transportMode": "tram"
+        },
+        {
+          "id": "9015014500604917",
+          "platform": "Läge A1",
+          "direction": "Kortedala via Sahlgrenska",
+          "number": "6",
+          "estimatedDepartureTime": "2023-06-30T12:36:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#00435c",
+            "backgroundColor": "#f89828"
+          },
+          "transportMode": "tram"
+        },
+        {
+          "id": "9015014500404923",
+          "platform": "Läge B2",
+          "direction": "Angered",
+          "number": "4",
+          "estimatedDepartureTime": "2023-06-30T12:37:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#ffffff",
+            "backgroundColor": "#027446"
+          },
+          "transportMode": "tram"
+        },
+        {
+          "id": "9015014501104910",
+          "platform": "Läge B1",
+          "direction": "Saltholmen via Annedal",
+          "number": "11",
+          "estimatedDepartureTime": "2023-06-30T12:37:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#ffffff",
+            "backgroundColor": "#000000"
+          },
+          "transportMode": "tram"
+        },
+        {
+          "id": "9015014501004928",
+          "platform": "Läge A1",
+          "direction": "Guldheden",
+          "number": "10",
+          "estimatedDepartureTime": "2023-06-30T12:37:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#006c93",
+            "backgroundColor": "#d8e8b0"
+          },
+          "transportMode": "tram"
+        }
+      ]
+    },
+    {
+      "title": "Nordstan",
+      "trips": [
+        {
+          "id": "9015014501700111",
+          "platform": "Läge C",
+          "direction": "Östra Sjukhuset",
+          "number": "17",
+          "estimatedDepartureTime": "2023-06-30T12:38:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#ffff50",
+            "backgroundColor": "#00008e"
+          },
+          "transportMode": "bus"
+        },
+        {
+          "id": "9015014521200074",
+          "platform": "Läge D",
+          "direction": "Partille centrum, Påstigning fram",
+          "number": "X1",
+          "estimatedDepartureTime": "2023-06-30T12:39:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#d400a2",
+            "backgroundColor": "#ffff50"
+          },
+          "transportMode": "bus"
+        },
+        {
+          "id": "9015014520500104",
+          "platform": "Läge A",
+          "direction": "Kungälv, Påstigning fram",
+          "number": "X4",
+          "estimatedDepartureTime": "2023-06-30T12:40:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#d400a2",
+            "backgroundColor": "#ffff50"
+          },
+          "transportMode": "bus"
+        },
+        {
+          "id": "9015014502100061",
+          "platform": "Läge C",
+          "direction": "Bergsjön via Nymånegatan",
+          "number": "21",
+          "estimatedDepartureTime": "2023-06-30T12:42:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#ffff50",
+            "backgroundColor": "#901580"
+          },
+          "transportMode": "bus"
+        },
+        {
+          "id": "9015014521200075",
+          "platform": "Läge A",
+          "direction": "Torslanda, Påstigning fram",
+          "number": "X1",
+          "estimatedDepartureTime": "2023-06-30T12:43:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#d400a2",
+            "backgroundColor": "#ffff50"
+          },
+          "transportMode": "bus"
+        }
+      ]
+    }
+  ],
+  "colMiddle": [
+    {
+      "title": "Kungsportsplatsen",
+      "trips": [
+        {
+          "id": "9015014501004939",
+          "platform": "Läge A",
+          "direction": "Biskopsgården",
+          "number": "10",
+          "estimatedDepartureTime": "2023-06-30T12:32:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#006c93",
+            "backgroundColor": "#d8e8b0"
+          },
+          "transportMode": "tram"
+        },
+        {
+          "id": "9015014500304914",
+          "platform": "Läge B",
+          "direction": "Högsbotorp",
+          "number": "3",
+          "estimatedDepartureTime": "2023-06-30T12:33:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#ffffff",
+            "backgroundColor": "#0071c1"
+          },
+          "transportMode": "tram"
+        },
+        {
+          "id": "9015014500404923",
+          "platform": "Läge A",
+          "direction": "Angered",
+          "number": "4",
+          "estimatedDepartureTime": "2023-06-30T12:35:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#ffffff",
+            "backgroundColor": "#027446"
+          },
+          "transportMode": "tram"
+        },
+        {
+          "id": "9015014501800099",
+          "platform": "Läge D",
+          "direction": "Kallebäck",
+          "number": "18",
+          "estimatedDepartureTime": "2023-06-30T12:35:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#ffff50",
+            "backgroundColor": "#323232"
+          },
+          "transportMode": "bus"
+        },
+        {
+          "id": "9015014500504920",
+          "platform": "Läge A",
+          "direction": "Länsmansgården",
+          "number": "5",
+          "estimatedDepartureTime": "2023-06-30T12:36:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#ffffff",
+            "backgroundColor": "#c63539"
+          },
+          "transportMode": "tram"
+        },
+        {
+          "id": "9015014506000377",
+          "platform": "Läge D",
+          "direction": "Fredriksdal, Påstigning fram",
+          "number": "60",
+          "estimatedDepartureTime": "2023-06-30T12:36:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#0061eb",
+            "backgroundColor": "#ffff50"
+          },
+          "transportMode": "bus"
+        },
+        {
+          "id": "9015014506000380",
+          "platform": "Läge C",
+          "direction": "Redbergsplatsen, Påstigning fram",
+          "number": "60",
+          "estimatedDepartureTime": "2023-06-30T12:37:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#0061eb",
+            "backgroundColor": "#ffff50"
+          },
+          "transportMode": "bus"
+        },
+        {
+          "id": "9015014500304927",
+          "platform": "Läge A",
+          "direction": "Kålltorp",
+          "number": "3",
+          "estimatedDepartureTime": "2023-06-30T12:39:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#ffffff",
+            "backgroundColor": "#0071c1"
+          },
+          "transportMode": "tram"
+        },
+        {
+          "id": "9015014501004928",
+          "platform": "Läge B",
+          "direction": "Guldheden",
+          "number": "10",
+          "estimatedDepartureTime": "2023-06-30T12:39:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#006c93",
+            "backgroundColor": "#d8e8b0"
+          },
+          "transportMode": "tram"
+        },
+        {
+          "id": "9015092020200175",
+          "platform": "Läge D",
+          "direction": "Landvetter Airport",
+          "number": "FLYG",
+          "estimatedDepartureTime": "2023-06-30T12:39:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#ffffff",
+            "backgroundColor": "#006c93"
+          },
+          "transportMode": "bus"
+        }
+      ]
+    }
+  ],
+  "colRight": [
+    {
+      "title": "Centralstationen",
+      "trips": [
+        {
+          "id": "9015014500404924",
+          "platform": "Läge D",
+          "direction": "Mölndal",
+          "number": "4",
+          "estimatedDepartureTime": "2023-06-30T12:36:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#ffffff",
+            "backgroundColor": "#027446"
+          },
+          "transportMode": "tram"
+        },
+        {
+          "id": "9015014500704897",
+          "platform": "Läge B",
+          "direction": "Bergsjön",
+          "number": "7",
+          "estimatedDepartureTime": "2023-06-30T12:37:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#ffffff",
+            "backgroundColor": "#764712"
+          },
+          "transportMode": "tram"
+        },
+        {
+          "id": "9015014500704922",
+          "platform": "Läge D",
+          "direction": "Tynnered",
+          "number": "7",
+          "estimatedDepartureTime": "2023-06-30T12:38:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#ffffff",
+            "backgroundColor": "#764712"
+          },
+          "transportMode": "tram"
+        },
+        {
+          "id": "9015014501700111",
+          "platform": "Läge J",
+          "direction": "Östra Sjukhuset",
+          "number": "17",
+          "estimatedDepartureTime": "2023-06-30T12:39:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#ffff50",
+            "backgroundColor": "#00008e"
+          },
+          "transportMode": "bus"
+        },
+        {
+          "id": "9015014500104930",
+          "platform": "Läge D",
+          "direction": "Tynnered",
+          "number": "1",
+          "estimatedDepartureTime": "2023-06-30T12:39:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#006c93",
+            "backgroundColor": "#ffffff"
+          },
+          "transportMode": "tram"
+        }
+      ]
+    },
+    {
+      "title": "Centralstationen Tågstation",
+      "trips": [
+        {
+          "id": "9015014179106451",
+          "platform": "Västtågen",
+          "direction": "Nässjö",
+          "number": "7285",
+          "estimatedDepartureTime": "2023-06-30T13:00:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#ffffff",
+            "backgroundColor": "#006c93"
+          },
+          "transportMode": "train"
+        },
+        {
+          "id": "9015014131103922",
+          "platform": "Västtågen",
+          "direction": "Alingsås",
+          "number": "3552",
+          "estimatedDepartureTime": "2023-06-30T13:06:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#ffffff",
+            "backgroundColor": "#006c93"
+          },
+          "transportMode": "train"
+        },
+        {
+          "id": "9015014130109092",
+          "platform": "Västtågen",
+          "direction": "Strömstad",
+          "number": "13260",
+          "estimatedDepartureTime": "2023-06-30T13:10:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#ffffff",
+            "backgroundColor": "#006c93"
+          },
+          "transportMode": "train"
+        },
+        {
+          "id": "9015074172200442",
+          "platform": "SJ Regional",
+          "direction": "Karlstad",
+          "number": "364",
+          "estimatedDepartureTime": "2023-06-30T13:14:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#ffffff",
+            "backgroundColor": "#006c93"
+          },
+          "transportMode": "train"
+        },
+        {
+          "id": "9015014133104762",
+          "platform": "Västtågen",
+          "direction": "Älvängen",
+          "number": "3652",
+          "estimatedDepartureTime": "2023-06-30T13:20:00.0000000+02:00",
+          "colors": {
+            "foregroundColor": "#ffffff",
+            "backgroundColor": "#006c93"
+          },
+          "transportMode": "train"
+        }
+      ]
+    }
+  ]
+}
