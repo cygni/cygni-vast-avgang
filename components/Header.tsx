@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import Dropdown from "./Dropdown";
 
 interface Props {
   refresh: (id?: string) => void;
@@ -22,9 +21,11 @@ const Header = (props: Props) => {
             height={65}
             className="object-contain"
           />
-          <h1 className="text-2xl font-semibold">Cygni</h1>
+          <h1 className="text-2xl mt-4 font-semibold">Cygni</h1>
+          <h1 className="text-2xl mt-4 font-semibold">|</h1>
+          <h1 className="text-2xl mt-4 font-semibold">Avgång</h1>
         </a>
-        <div className="flex items-center justify-center">
+        {/*         <div className="flex items-center justify-center">
           <Dropdown refresh={async (id) => props.refresh(id)} />
         </div>
         <div className="flex items-center justify-end">
@@ -41,7 +42,7 @@ const Header = (props: Props) => {
               className="object-contain cursor-pointer transition duration-300 rounded-full hover:bg-slate-100"
             />
           </button>
-          {/*           <button >
+          <button>
             <Image
               src="/assets/filter.svg"
               alt="filter"
@@ -49,8 +50,8 @@ const Header = (props: Props) => {
               height={50}
               className="object-contain cursor-pointer transition rounded-full hover:backdrop-brightness-90"
             />
-          </button> */}
-        </div>
+          </button>
+        </div> */}
       </div>
     </>
   );
