@@ -16,4 +16,17 @@ type Colors = {
 export type StopArea = {
   id: string;
   name: string;
+  offset: string;
+  limit: string;
+};
+
+export type ColumnWrapper = {
+  colLeft: Column[];
+  colMiddle: Column[];
+  colRight: Column[];
+};
+
+export type Column = {
+  title: string;
+  trips: Trip[];
 };
