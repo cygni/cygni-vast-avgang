@@ -2,9 +2,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* cygni brand */
 :root {
   --font-fallback: "Barlow";
   --font-barlow-condensed: "Barlow condensed";
+  --cygni-rose-quartz: #eab8b2;
+  --cygni-purbeck-stone: #e3d9d7;
+  --cygni-galaxy-blue: #000735;
+  --cygni-copy-black: #231f20;
 }
 
 html {
@@ -18,5 +24,10 @@ h3 {
 }
 body {
   color: #000735;
-  background: linear-gradient(120deg, #eab8b2, #e3d9d7);
+  background: linear-gradient(
+    135deg,
+    var(--cygni-rose-quartz),
+    var(--cygni-purbeck-stone),
+    var(--cygni-rose-quartz)
+  );
 }

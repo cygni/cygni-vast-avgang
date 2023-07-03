@@ -39,7 +39,7 @@ const TripCard = (props: Props) => {
   });
 
   return (
-    <div className="p-4 mb-4 bg-gray-50 rounded-lg shadow-md transition border ">
+    <div className="p-4 mb-4 bg-gray-50 rounded-lg shadow-md transition border">
       <div className="flex items-center">
         <div
           style={{
@@ -50,14 +50,14 @@ const TripCard = (props: Props) => {
         >
           {trip.number}
         </div>
-        <div className="flex items-center justify-between w-full ">
+        <div className="xl:flex xl:items-center xl:justify-between w-full">
           <div className="pr-18">
             <h2 className="text-xl font-bold">{trip.direction}</h2>
           </div>
           <h2 className="text-xl font-bold">{trip.platform}</h2>
         </div>
       </div>
-      <div className="pt-3 flex items-center justify-between w-full ">
+      <div className="pt-3 flex items-center justify-between w-full">
         <p>Avgång: {formatDate(trip.estimatedDepartureTime)}</p>
         <p>{timeUntilDepartue}</p>
       </div>

@@ -22,7 +22,7 @@ export default function Trips() {
 
     //const trips = mock;
     //const trips = (await fetchTrips(stopAreaId ?? selectedStopArea)) ?? [];
-    const trips = (await fetchAllTrips()) ?? [];
+    const trips = await fetchAllTrips();
     setColumnWrapper(trips);
     setIsLoading(false);
   };
@@ -45,8 +45,8 @@ export default function Trips() {
   const renderContent = (col: Column) => {
     return (
       <>
-        <div className="flex justify-center items-center bg-gray-50 rounded-lg mb-8 py-2 shadow-md">
-          <h1 className="self-center text-4xl">{col.title}</h1>
+        <div className="flex justify-center items-center bg-gray-50 rounded-lg mb-4 py-2 shadow-md">
+          <h1 className="self-center text-2xl">{col.title}</h1>
         </div>
         {col.trips.map((t: any) => (
           <TripCard key={t.id} trip={t} />
@@ -68,35 +68,35 @@ export default function Trips() {
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
+        <div className="flex justify-center">
+          <Header refresh={async (id) => refresh(id)} />
+        </div>
         <div className="flex justify-between">
           {columnWrapper && (
             <>
-              <div className="w-1/3 pr-6">
+              <div className="w-1/3 pr-4">
                 {columnWrapper.colLeft.map((col: any) => (
-                  <div key={col.title} className="flex flex-col mb-8">
+                  <div key={col.title} className="flex flex-col mb-6">
                     {renderContent(col)}
                   </div>
                 ))}
               </div>
-              <div className="w-1/3 px-6">
+              <div className="w-1/3 px-4">
                 {columnWrapper.colMiddle.map((col: any) => (
                   <div key={col.title} className="flex flex-col">
                     {renderContent(col)}
                   </div>
                 ))}
               </div>
-              <div className="w-1/3 pl-6">
+              <div className="w-1/3 pl-4">
                 {columnWrapper.colRight.map((col: any) => (
-                  <div key={col.title} className="flex flex-col mb-10">
+                  <div key={col.title} className="flex flex-col mb-6">
                     {renderContent(col)}
                   </div>
                 ))}
               </div>
             </>
           )}
-        </div>
-        <div className="flex justify-center">
-          <Header refresh={async (id) => refresh(id)} />
         </div>
       </Transition>
 

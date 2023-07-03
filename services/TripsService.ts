@@ -12,38 +12,45 @@ export async function fetchAllTrips() {
     colMiddle: [],
     colRight: [],
   };
-  for (let stopArea of StopAreas) {
-    let res = await fetch(
-      `https://ext-api.vasttrafik.se/pr/v4/stop-areas/${stopArea.id}/departures?&limit=${stopArea.limit}&offset=${stopArea.offset}`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+
+  try {
+    await delay(); /* For testing loading indicatior */
+    for (let stopArea of StopAreas) {
+      let res = await fetch(
+        `https://ext-api.vasttrafik.se/pr/v4/stop-areas/${stopArea.id}/departures?&limit=${stopArea.limit}&offset=${stopArea.offset}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const data = await res.json();
+      const column = {
+        title: stopArea.name,
+        trips: mapToTrips(data.results),
+      };
+
+      switch (stopArea.id) {
+        case "9021014001760000": //Brunsparken
+        case "9021014004945000": //Nordstan
+          columnWrapper.colLeft.push(column);
+          break;
+        case "9021014004090000": //Kungsportsplatsen
+          columnWrapper.colMiddle.push(column);
+          break;
+        case "9021014001950000": //Centralstationen
+        case "9021014008000000": //Centralstationen tåg
+          columnWrapper.colRight.push(column);
+          break;
       }
-    );
-
-    const data = await res.json();
-    const column = {
-      title: stopArea.name,
-      trips: mapToTrips(data.results),
-    };
-
-    switch (stopArea.id) {
-      case "9021014001760000": //Brunsparken
-      case "9021014004945000": //Nordstan
-        columnWrapper.colLeft.push(column);
-        break;
-      case "9021014004090000": //Kungsportsplatsen
-        columnWrapper.colMiddle.push(column);
-        break;
-      case "9021014001950000": //Centralstationen
-      case "9021014008000000": //Centralstationen tåg
-        columnWrapper.colRight.push(column);
-        break;
     }
+    return columnWrapper;
+  } catch (error) {
+    /* TODO: Implement error handling */
+    console.error(error);
+    alert("Could not get trips");
   }
-  return columnWrapper;
 }
 
 export async function fetchTrips(stopArea: string) {
