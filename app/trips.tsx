@@ -3,35 +3,23 @@ import Header from "@components/Header";
 import Spinner from "@components/Spinner";
 import TripCard from "@components/TripCard";
 import { Transition } from "@headlessui/react";
-import { StopAreas } from "@models/Models";
 import { Column, ColumnWrapper } from "@models/Trip";
 import { fetchAllTrips } from "@services/TripsService";
 import { useEffect, useState } from "react";
-//import mock from "../mock/data2.json";
+//import mock from "../mock/mock.json";
 
 export default function Trips() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [columnWrapper, setColumnWrapper] = useState<ColumnWrapper>();
-  const [selectedStopArea, setSelectedStopArea] = useState<string>(
-    StopAreas[0].id
-  );
   let interval: any = null;
 
-  const fetchData = async (stopAreaId?: string) => {
+  const fetchData = async () => {
     setIsLoading(true);
 
     //const trips = mock;
-    //const trips = (await fetchTrips(stopAreaId ?? selectedStopArea)) ?? [];
     const trips = await fetchAllTrips();
     setColumnWrapper(trips);
     setIsLoading(false);
-  };
-
-  const refresh = async (id?: string) => {
-    if (id) {
-      setSelectedStopArea(id);
-    }
-    fetchData(id);
   };
 
   useEffect(() => {
@@ -45,9 +33,7 @@ export default function Trips() {
   const renderContent = (col: Column) => {
     return (
       <>
-        <div className="flex justify-center items-center bg-gray-50 rounded-lg mb-4 py-2 shadow-md">
-          <h1 className="self-center text-2xl">{col.title}</h1>
-        </div>
+        <h1 className="self-center text-3xl mb-4">{col.title}</h1>
         {col.trips.map((t: any) => (
           <TripCard key={t.id} trip={t} />
         ))}
@@ -69,7 +55,7 @@ export default function Trips() {
         leaveTo="opacity-0"
       >
         <div className="flex justify-center">
-          <Header refresh={async (id) => refresh(id)} />
+          <Header />
         </div>
         <div className="flex justify-between">
           {columnWrapper && (
@@ -99,26 +85,6 @@ export default function Trips() {
           )}
         </div>
       </Transition>
-
-      {/*       <div>
-        {isLoading && <Spinner />}
-        {
-          <Transition
-            appear={true}
-            show={!isLoading}
-            enter="transition-opacity ease-linear duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition-opacity ease-linear duration-150"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            {tripList.map((trip: Trip) => (
-              <TripCard key={trip.id} trip={trip} />
-            ))}
-          </Transition>
-        }
-      </div> */}
     </div>
   );
 }
