@@ -52,9 +52,9 @@ const TripCard = (props: Props) => {
         </div>
         <div className="xl:flex xl:items-center xl:justify-between w-full">
           <div className="pr-18">
-            <h2 className="text-xl font-bold">{trip.direction}</h2>
+            <h2 className="text-2xl font-bold">{trip.direction}</h2>
           </div>
-          <h2 className="text-xl font-bold">{trip.platform}</h2>
+          <h2 className="text-2xl font-bold">{trip.platform}</h2>
         </div>
       </div>
       <div className="pt-3 flex items-center justify-between w-full">

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Barlow Condensed:wght@400;600&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,7 +7,7 @@
 /* cygni brand */
 :root {
   --font-fallback: "Barlow";
-  --font-barlow-condensed: "Barlow condensed";
+  --font-barlow-condensed: "Barlow Condensed";
   --cygni-rose-quartz: #eab8b2;
   --cygni-purbeck-stone: #e3d9d7;
   --cygni-galaxy-blue: #000735;
@@ -26,8 +27,8 @@ body {
   color: #000735;
   background: linear-gradient(
     135deg,
-    var(--cygni-rose-quartz),
-    var(--cygni-purbeck-stone),
-    var(--cygni-rose-quartz)
+    rgba(234, 184, 178, 0.25),
+    rgba(227, 217, 215, 0.25),
+    rgba(234, 184, 178, 0.25)
   );
 }
