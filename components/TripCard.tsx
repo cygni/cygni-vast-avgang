@@ -51,7 +51,7 @@ const TripCard = (props: Props) => {
           {trip.number}
         </div>
         <div className="xl:flex xl:items-center xl:justify-between w-full">
-          <div className="pr-15">
+          <div className="pr-3">
             <h2 className="text-2xl font-bold">{trip.direction}</h2>
           </div>
           <h2 className="text-2xl font-bold">{trip.platform}</h2>
