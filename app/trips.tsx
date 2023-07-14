@@ -60,21 +60,21 @@ export default function Trips() {
         <div className="flex justify-between">
           {columnWrapper && (
             <>
-              <div className="w-1/3 pr-4">
+              <div className="w-1/3 pr-3">
                 {columnWrapper.colLeft.map((col: any) => (
                   <div key={col.title} className="flex flex-col mb-6">
                     {renderContent(col)}
                   </div>
                 ))}
               </div>
-              <div className="w-1/3 px-4">
+              <div className="w-1/3 px-3">
                 {columnWrapper.colMiddle.map((col: any) => (
                   <div key={col.title} className="flex flex-col">
                     {renderContent(col)}
                   </div>
                 ))}
               </div>
-              <div className="w-1/3 pl-4">
+              <div className="w-1/3 pl-3">
                 {columnWrapper.colRight.map((col: any) => (
                   <div key={col.title} className="flex flex-col mb-6">
                     {renderContent(col)}

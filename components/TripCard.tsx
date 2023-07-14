@@ -39,19 +39,19 @@ const TripCard = (props: Props) => {
   });
 
   return (
-    <div className="p-4 mb-4 bg-gray-50 rounded-lg shadow-md transition border">
+    <div className="p-3 mb-3 bg-gray-50 rounded-lg shadow-md transition border">
       <div className="flex items-center">
         <div
           style={{
             color: trip.colors.foregroundColor,
             backgroundColor: trip.colors.backgroundColor,
           }}
-          className="flex justify-center min-w-[55px] border rounded-lg shadow mr-4 py-1"
+          className="flex justify-center min-w-[55px] border rounded-lg shadow mr-3 py-1"
         >
           {trip.number}
         </div>
         <div className="xl:flex xl:items-center xl:justify-between w-full">
-          <div className="pr-18">
+          <div className="pr-15">
             <h2 className="text-2xl font-bold">{trip.direction}</h2>
           </div>
           <h2 className="text-2xl font-bold">{trip.platform}</h2>
