@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Barlow Condensed:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Barlow+Condensed:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Chivo+Mono:wght@400;600&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,6 +10,7 @@
 :root {
   --font-fallback: "Barlow";
   --font-barlow-condensed: "Barlow Condensed";
+  --font-chiwo-mono: "Chiwo Mono";
   --cygni-rose-quartz: #eab8b2;
   --cygni-purbeck-stone: #e3d9d7;
   --cygni-galaxy-blue: #000735;

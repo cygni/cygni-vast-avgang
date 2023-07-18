@@ -48,15 +48,14 @@ export default function Trips() {
       <Transition
         appear={true}
         show={!isLoading}
-        enter="relative transition-opacity ease-linear duration-300"
+        enter="transition-opacity ease-linear duration-300"
         enterFrom="opacity-0"
         enterTo="opacity-100"
         leave="transition-opacity ease-linear duration-150"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <div className="flex justify-center py-5">
-          <Clock />
+        <div className="flex justify-center py-3">
           <Header />
         </div>
 
@@ -87,6 +86,7 @@ export default function Trips() {
             </>
           )}
         </div>
+        <Clock />
       </Transition>
     </div>
   );

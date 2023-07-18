@@ -2,9 +2,6 @@
 import { useEffect, useState } from "react";
 
 const Clock = () => {
-  // let time: String = "";
-  // let date: String = "";
-
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
 
@@ -63,9 +60,9 @@ const Clock = () => {
 
   return (
     <>
-      <div className="font-semibold flex flex-col justify-center items-center absolute right-5 top-5 p-3 mb-3 bg-gray-50 rounded-lg shadow-md transition border">
-        <p className="text-md">{date}</p>
-        <p className="text-2xl">{time}</p>
+      <div className="font-chivo-mono flex flex-col justify-center items-center p-3 mt-4 -mb-8">
+        <p className="text-5xl">{date}</p>
+        <p className=" text-9xl">{time}</p>
       </div>
     </>
   );
