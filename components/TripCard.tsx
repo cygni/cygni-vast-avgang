@@ -50,13 +50,13 @@ const TripCard = (props: Props) => {
         >
           {trip.number}
         </div>
-        <div className="xl:flex xl:items-center xl:justify-between w-full -mt-1">
+        <div className="xl:flex xl:justify-between w-full -mt-1">
           <div className="ml-10 pl-6 gap-4">
             <h2 className="md:text-3xl text-2xl font-semibold">
               {trip.direction}
             </h2>
           </div>
-          <h2 className="text-2xl font-semibold min-w-[20%] mr-1 flex justify-end">
+          <h2 className="text-3xl min-w-[20%] mr-1 flex justify-end">
             {trip.platform}
           </h2>
         </div>
