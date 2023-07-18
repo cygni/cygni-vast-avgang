@@ -26,9 +26,9 @@ export default function Trips() {
   useEffect(() => {
     fetchData();
     interval = setInterval(() => {
-      console.log("[USEEFFECT] 5 MIN PASSED. FETCHING DATA AGAIN!");
+      console.log("[USEEFFECT] 3 MIN PASSED. FETCHING DATA AGAIN!");
       fetchData();
-    }, 300000);
+    }, 180000);
   }, []);
 
   const renderContent = (col: Column) => {

@@ -1,9 +1,12 @@
 "use client";
+import { useEffect, useState } from "react";
 
 const Clock = () => {
-  let time: String = "";
-  let date: String = "";
-  const timer = setInterval(updateTime, 1000);
+  // let time: String = "";
+  // let date: String = "";
+
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
 
   const week = [
     "Söndag",
@@ -30,24 +33,25 @@ const Clock = () => {
     "December",
   ];
 
-  updateTime();
-  function updateTime() {
+  setInterval(() => {
     const currentDate: Date = new Date();
-    time =
+    setTime(
       zeroPadding(currentDate.getHours(), 2) +
-      ":" +
-      zeroPadding(currentDate.getMinutes(), 2) +
-      ":" +
-      zeroPadding(currentDate.getSeconds(), 2);
-    date =
+        ":" +
+        zeroPadding(currentDate.getMinutes(), 2) +
+        ":" +
+        zeroPadding(currentDate.getSeconds(), 2)
+    );
+    setDate(
       week[currentDate.getDay()] +
-      " " +
-      zeroPadding(currentDate.getDate(), 2) +
-      " " +
-      month[currentDate.getMonth()] +
-      " " +
-      zeroPadding(currentDate.getFullYear(), 4);
-  }
+        " " +
+        zeroPadding(currentDate.getDate(), 2) +
+        " " +
+        month[currentDate.getMonth()] +
+        " " +
+        zeroPadding(currentDate.getFullYear(), 4)
+    );
+  }, 1000);
 
   function zeroPadding(num: number, digit: number) {
     let zero = "";
