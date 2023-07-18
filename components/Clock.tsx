@@ -63,7 +63,7 @@ const Clock = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center absolute right-5 top-5 p-3 mb-3 bg-gray-50 rounded-lg shadow-md transition border">
+      <div className="font-semibold flex flex-col justify-center items-center absolute right-5 top-5 p-3 mb-3 bg-gray-50 rounded-lg shadow-md transition border">
         <p className="text-md">{date}</p>
         <p className="text-2xl">{time}</p>
       </div>
