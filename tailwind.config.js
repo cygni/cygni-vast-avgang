@@ -16,8 +16,16 @@ module.exports = {
       "3xl": "1.7rem",
       "4xl": "2rem",
       "5xl": "3rem",
+      "6xl": "3.75rem",
+      "7xl": "4.5rem",
+      "8xl": "6rem",
+      "9xl": "8rem",
+      "10xl": "10rem",
     },
     extend: {
+      fontFamily: {
+        "chivo-mono": ["Chivo Mono", "monospace"],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

@@ -1,19 +1,19 @@
 import { StopArea } from "./Trip";
 
 export const StopAreas: StopArea[] = [
-  { name: "Brunnsparken", id: "9021014001760000", offset: "20", limit: "9" },
-  { name: "Nordstan", id: "9021014004945000", offset: "10", limit: "9" },
+  { name: "Brunnsparken", id: "9021014001760000", offset: "20", limit: "7" },
+  { name: "Nordstan", id: "9021014004945000", offset: "10", limit: "7" },
   {
     name: "Kungsportsplatsen",
     id: "9021014004090000",
     offset: "10",
-    limit: "20",
+    limit: "15",
   },
   {
     name: "Centralstationen",
     id: "9021014001950000",
     offset: "20",
-    limit: "10",
+    limit: "7",
   },
   {
     name: "Centralstationen Tågstation",
