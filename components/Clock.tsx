@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 const Clock = () => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+  const [weekNr, setWeekNr] = useState("");
 
   const week = [
     "Söndag",
@@ -48,6 +49,7 @@ const Clock = () => {
         " " +
         zeroPadding(currentDate.getFullYear(), 4)
     );
+    setWeekNr("Vecka " + ISO8601_week_nr(currentDate));
   }, 1000);
 
   function zeroPadding(num: number, digit: number) {
@@ -58,11 +60,24 @@ const Clock = () => {
     return (zero + num).slice(-digit);
   }
 
+  function ISO8601_week_nr(dt: Date) {
+    let tdt: any = new Date(dt.valueOf());
+    let dayn: number = (dt.getDay() + 6) % 7;
+    tdt.setDate(tdt.getDate() - dayn + 3);
+    let firstThursday: number = tdt.valueOf();
+    tdt.setMonth(0, 1);
+    if (tdt.getDay() !== 4) {
+      tdt.setMonth(0, 1 + ((4 - tdt.getDay() + 7) % 7));
+    }
+    return 1 + Math.ceil((firstThursday - tdt) / 604800000);
+  }
+
   return (
     <>
-      <div className="font-chivo-mono flex flex-col justify-center items-center p-3 mt-4 -mb-8">
-        <p className="text-5xl">{date}</p>
-        <p className=" text-9xl">{time}</p>
+      <div className="font-chivo-mono flex flex-col justify-center items-center pb-5">
+        <p className="text-10xl">{time}</p>
+        <p className="text-7xl">{date}</p>
+        <p className="text-7xl">{weekNr}</p>
       </div>
     </>
   );
