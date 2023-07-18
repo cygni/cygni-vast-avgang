@@ -55,11 +55,11 @@ export default function Trips() {
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <div className="flex justify-center py-3">
+        <div className=" flex justify-center py-3 p-6">
           <Header />
         </div>
 
-        <div className="flex justify-between">
+        <div className=" p-6 flex justify-between">
           {columnWrapper && (
             <>
               <div className="w-1/3 pr-3">

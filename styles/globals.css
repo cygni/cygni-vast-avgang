@@ -30,9 +30,11 @@ body {
   color: #000735;
 
   background: linear-gradient(
-    to right,
+    to bottom,
+    rgba(234, 184, 178, 1),
+    rgba(234, 184, 178, 0.75),
+    rgba(227, 217, 215, 1),
     rgba(234, 184, 178, 0.25),
-    rgba(227, 217, 215, 0.25),
-    rgba(234, 184, 178, 0.25)
+    rgba(234, 184, 178, 1)
   );
 }
