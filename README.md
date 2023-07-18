@@ -12,7 +12,7 @@ This Next.js app shows departues close to the Cygni Gothenburg office, with the 
 ### The departue areas are:
 
 - Kungportsplatsen
-- Brunsparken
+- Brunnsparken
 - Nordstan
 - Centralstationen (Trams)
 - Centralstationen (Trains)

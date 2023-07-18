@@ -1,6 +1,7 @@
 "use client";
 import Header from "@components/Header";
 import Spinner from "@components/Spinner";
+import Clock from "@components/Clock";
 import TripCard from "@components/TripCard";
 import { Transition } from "@headlessui/react";
 import { Column, ColumnWrapper } from "@models/Trip";
@@ -33,7 +34,7 @@ export default function Trips() {
   const renderContent = (col: Column) => {
     return (
       <>
-        <h1 className="self-center text-3xl mb-4">{col.title}</h1>
+        <h1 className="self-center text-3xl mb-4 font-semibold">{col.title}</h1>
         {col.trips.map((t: any) => (
           <TripCard key={t.id} trip={t} />
         ))}
@@ -47,16 +48,18 @@ export default function Trips() {
       <Transition
         appear={true}
         show={!isLoading}
-        enter="transition-opacity ease-linear duration-300"
+        enter="relative transition-opacity ease-linear duration-300"
         enterFrom="opacity-0"
         enterTo="opacity-100"
         leave="transition-opacity ease-linear duration-150"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <div className="flex justify-center">
+        <div className="flex justify-center py-5">
+          <Clock />
           <Header />
         </div>
+
         <div className="flex justify-between">
           {columnWrapper && (
             <>

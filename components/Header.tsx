@@ -17,9 +17,9 @@ const Header = () => {
             height={65}
             className="object-contain"
           />
-          <h1 className="text-2xl mt-4 font-semibold">Cygni</h1>
-          <h1 className="text-2xl mt-4 font-semibold">|</h1>
-          <h1 className="text-2xl mt-4 font-semibold">Avgång</h1>
+          <h1 className="text-3xl mt-4 font-semibold">Cygni</h1>
+          <h1 className="text-3xl mt-4 font-semibold">|</h1>
+          <h1 className="text-3xl mt-4 font-semibold">Avgång</h1>
         </a>
       </div>
     </>

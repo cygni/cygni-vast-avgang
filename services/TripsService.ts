@@ -32,7 +32,7 @@ export async function fetchAllTrips() {
       };
 
       switch (stopArea.id) {
-        case "9021014001760000": //Brunsparken
+        case "9021014001760000": //Brunnsparken
         case "9021014004945000": //Nordstan
           columnWrapper.colLeft.push(column);
           break;
