@@ -48,18 +48,18 @@ export default function Trips() {
       <Transition
         appear={true}
         show={!isLoading}
-        enter="transition-opacity ease-linear duration-300"
+        enter="relative transition-opacity ease-linear duration-300"
         enterFrom="opacity-0"
         enterTo="opacity-100"
         leave="transition-opacity ease-linear duration-150"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <div className=" flex justify-center py-3 p-6">
+        <div className="flex justify-center">
           <Header />
         </div>
 
-        <div className=" p-6 flex justify-between">
+        <div className="p-6 flex justify-between">
           {columnWrapper && (
             <>
               <div className="w-1/3 pr-3">
