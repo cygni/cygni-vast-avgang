@@ -43,12 +43,12 @@ export default function Trips() {
   };
 
   return (
-    <div className="relative z-0 w-full">
+    <div className="z-0 w-full h-screen">
       {isLoading && <Spinner />}
       <Transition
         appear={true}
         show={!isLoading}
-        enter=" transition-opacity ease-linear duration-300"
+        enter="transition-opacity ease-linear duration-300"
         enterFrom="opacity-0"
         enterTo="opacity-100"
         leave="transition-opacity ease-linear duration-150"
@@ -87,7 +87,9 @@ export default function Trips() {
           )}
         </div>
       </Transition>
-      <Clock />
+      <div className="relative min-h-[400px]">
+        <Clock />
+      </div>
     </div>
   );
 }
