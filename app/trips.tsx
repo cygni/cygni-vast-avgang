@@ -43,7 +43,10 @@ export default function Trips() {
   };
 
   return (
-    <div className="z-0 w-full h-screen">
+    <div className="relative z-0 w-full h-screen">
+      <div className="flex justify-center">
+        <Header />
+      </div>
       {isLoading && <Spinner />}
       <Transition
         appear={true}
@@ -55,10 +58,6 @@ export default function Trips() {
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <div className="flex justify-center">
-          <Header />
-        </div>
-
         <div className="p-6 flex justify-between">
           {columnWrapper && (
             <>
@@ -87,9 +86,7 @@ export default function Trips() {
           )}
         </div>
       </Transition>
-      <div className="relative min-h-[400px]">
-        <Clock />
-      </div>
+      <Clock />
     </div>
   );
 }

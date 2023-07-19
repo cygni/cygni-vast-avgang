@@ -39,7 +39,7 @@ const TripCard = (props: Props) => {
   });
 
   return (
-    <div className="p-3 mb-3 bg-gray-50 rounded-lg shadow-md transition border">
+    <div className="p-3 mb-3 bg-gray-50 rounded-lg shadow-md transition border opacity-90">
       <div className="relative flex items-center ">
         <div
           style={{
