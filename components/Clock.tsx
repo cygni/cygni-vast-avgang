@@ -74,7 +74,7 @@ const Clock = () => {
 
   return (
     <>
-      <div className="fixed -z-10 bottom-0 left-1/2 transform -translate-x-1/2 transition font-chivo-mono flex flex-col justify-center items-center pb-5">
+      <div className="fixed w-full -z-10 bottom-0 left-1/2 transform -translate-x-1/2 transition font-chivo-mono flex flex-col justify-center items-center pb-5">
         <p className="text-10xl">{time}</p>
         <p className="text-7xl">{date}</p>
         <p className="text-7xl">{weekNr}</p>
